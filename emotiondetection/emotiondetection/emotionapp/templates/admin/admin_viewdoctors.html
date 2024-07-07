@@ -1,0 +1,81 @@
+{% extends 'admin/admin_home.html' %}
+{% block content %}
+ 
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>
+                Doctors
+            </h2>
+        </div>
+        <!-- Basic Examples -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            Doctors
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <!-- Add any header dropdowns if needed -->
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Place</th>
+                                        <th>Qualification</th>
+                                        <th>Experience</th>
+                                        <th>Specialization</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Status</th>
+                                        <th>Actions</th> <!-- New column for actions -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for doctor in data %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ doctor.name }}</td>
+                                            <td>{{ doctor.email }}</td>
+                                            <td>{{ doctor.phn }}</td>
+                                            <td>{{ doctor.place }}</td>
+                                            <td>{{ doctor.qualification }}</td>
+                                            <td>{{ doctor.exp }}</td>
+                                            <td>{{ doctor.specialization }}</td>
+                                            <td>{{ doctor.start_time }}</td>
+                                            <td>{{ doctor.end_time }}</td>
+                                            <td>{{ doctor.status }}</td>
+                                            <td>
+                                                {% if doctor.status == 'pending' %}
+                                                    <form action="{% url 'approve_doctor' doctor.id %}" method="post">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="btn btn-success">Approve</button>
+                                                    </form>
+                                                    <form action="{% url 'reject_doctor' doctor.id %}" method="post">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="btn btn-danger">Reject</button>
+                                                    </form>
+                                                {% else %}
+                                                    <span class="text-muted">Already {{ doctor.status }}</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

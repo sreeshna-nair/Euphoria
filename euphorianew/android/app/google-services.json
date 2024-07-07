@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "519795390123",
+    "project_id": "euporia-5b422",
+    "storage_bucket": "euporia-5b422.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519795390123:android:7112071d41f3d581aea9ee",
+        "android_client_info": {
+          "package_name": "com.example.euphoria"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbzsYWHilkUoyUefwWv0Coi0CDiWWKPE0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
